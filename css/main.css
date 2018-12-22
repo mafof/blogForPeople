@@ -1,0 +1,125 @@
+body {
+    background-color: #EEEEF6;
+}
+
+header {
+    min-height: 400px;
+    width: 100%;
+    height: 500px;
+    background-image: url("/img/header.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: table;
+}
+
+header p {
+    margin: 0px;
+    text-align: center;
+    font-size: 50px;
+    color: #4e4e4e;
+    font-family: sans-serif;
+}
+header p:last-child {
+    padding-left: 5%;
+}
+
+.text {
+    display: table-cell;
+    vertical-align: middle;
+    height: inherit;
+}
+
+/** body => */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding-top: 1rem;
+}
+
+.container .posts-list {
+    width: 60%;
+    display: inline-block;
+}
+
+.container .posts-popular {
+    width: 40%;
+    display: inline-block;
+    margin-left: -4px;
+    float: right;
+}
+
+.container .posts-popular .container-post-popular {
+    width: 95%;
+    float: right;
+    background-color: white;
+    border-radius: 14px;
+}
+
+.container .posts-popular .container-post-popular h2 {
+    margin: 0px;
+    padding: 10px;
+}
+
+.container .posts-popular .container-post-popular .tags {
+    padding: 0px 10px 10px 10px;
+}
+
+.container .posts-list .post {
+    width: 100%;
+    background-color: white;
+    border-radius: 14px;
+    margin-bottom: 1rem;
+}
+
+.container .posts-list .post .title {
+    margin: 0px;
+    padding: 10px;
+}
+
+.container .posts-list .post .text-prev {
+    margin: 0px;
+    padding: 5px 5px 10px 5px;
+}
+
+.container .posts-list .post .post-footer {
+    height: 20px;
+    border-top: 1px solid black;
+    padding: 10px;
+}
+
+.container .posts-list .post .post-footer .post-footer-part {
+    display: inline;
+    margin-left: 10px;
+}
+
+.container .posts-list .post .post-footer .post-footer-part:first-child {
+    margin-left: 0px;
+}
+
+.container .posts-list .post .post-footer .post-footer-part a {
+    padding-left: 5px;
+    color: black;
+}
+
+.container .posts-list .post .post-footer .post-footer-part p {
+    padding-left: 5px;
+    color: black;
+    display: inline;
+    margin: 0px;
+}
+
+.container .posts-list .post .post-footer .reading-more {
+    float: right;
+    margin: 0px;
+}
+
+@media all and (max-width: 960px) {
+    /** body=> */
+    .container .posts-popular {
+        display: none;
+    }
+    .container .posts-list {
+        width: 100%;
+    }
+}
