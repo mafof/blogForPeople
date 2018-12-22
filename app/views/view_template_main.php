@@ -18,8 +18,10 @@
         <ul>
             <li><i class="fas fa-home"></i><a href="/">Главная</a></li>
             <li><i class="fab fa-facebook-messenger"></i><a href="/about">О блоге</a></li>
-            <li class="auth"><i class="fas fa-user-plus"></i><a href="/register">Зарегистрироваться</a></li>
-            <li class="auth"><i class="fas fa-sign-in-alt"></i><a href="/login">Войти</a></li>
+            <div class="container-right">
+                <li><i class="fas fa-sign-in-alt"></i><a href="/login">Войти</a></li>
+                <li><i class="fas fa-user-plus"></i><a href="/register">Зарегистрироваться</a></li>
+            </div>
         </ul>
     </nav>
     <!-- HEADER -->
