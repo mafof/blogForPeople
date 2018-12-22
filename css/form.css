@@ -1,0 +1,48 @@
+.form-group * {
+    display: block;
+}
+
+.form-group {
+    margin-top: 20px;
+}
+
+.form-group:first-child {
+    margin-top: 0px;
+}
+
+.form-group .error-code {
+    color: red;
+    margin-top: 5px;
+    display: none;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 98.5%;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: .25em;
+    padding: 3px;
+}
+
+.submit-form-button {
+    border: none;
+    border-radius: 5px;
+    min-width: 100px;
+    min-height: 30px;
+    margin-top: 20px;
+    background-color: #00d92f;
+    color: #fff;
+
+}
+
+.submit-form-button:hover {
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    transition: box-shadow 0.2s;
+}
+
+.submit-form-button:focus {
+    border: none;
+}

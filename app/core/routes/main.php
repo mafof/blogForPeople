@@ -13,5 +13,5 @@ Router::get('/', function() {
 Router::error(function() {
     include_once "app/controllers/controller_error_404.php";
     (new \App\Controllers\ControllerError404())->action();
-    exit(); // хак что бы не было ошибки
+    exit(); // хак что бы не было ошибки при 404
 });

@@ -1,0 +1,18 @@
+.container .card {
+    max-width: 550px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 14px;
+}
+
+.container .card .row {
+    padding: 10px;
+}
+
+.card-error {
+    background-color: rgba(255, 0, 0, 0.62)!important;
+}
+
+.card-register {
+    margin-top: 1rem!important;
+}

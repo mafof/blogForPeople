@@ -1,4 +1,11 @@
-<div class="container">
+<!-- HEADER -->
+<header>
+    <div class="text">
+        <p>Блог для...</p>
+        <p>...народа</p>
+    </div>
+</header>
+<div class="container container-main-page">
     <!-- NAVIGATION? -->
     <div class="posts-list">
         <div class="post">
