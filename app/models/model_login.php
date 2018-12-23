@@ -27,6 +27,9 @@ class ModelLogin extends BaseModel {
 
         if(empty($login) || empty($password)) return ["errors" => ["Некорректны введенные данные"]]; // Проверка на пустоту
 
+        $login = htmlspecialchars($login);
+        $password = htmlspecialchars($password);
+
         if($this->checkStringToRussianLaungage($login) ||
            $this->checkFirstSymbolToNumber($login[0]))
         {

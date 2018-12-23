@@ -27,6 +27,10 @@ class ModelRegister extends BaseModel {
 
         if(empty($nickname) || empty($email) || empty($password)) return ["errors" => ["Некорректны введенные данные"]]; // Проверка на пустоту
 
+        $nickname = htmlspecialchars($nickname);
+        $email = htmlspecialchars($email);
+        $password = htmlspecialchars($password);
+
         if($this->checkStringToRussianLaungage($nickname) ||
            $this->checkStringToRussianLaungage($email) ||
            $this->checkStringToRussianLaungage($password) ||
