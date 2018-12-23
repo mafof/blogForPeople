@@ -7,11 +7,6 @@ Router::get('/login', function() {
    (new App\Controllers\ControllerLogin())->action();
 });
 
-//Router::get('/register', function() {
-//    include_once "app/controllers/controller_register.php";
-//    (new App\Controllers\ControllerRegister())->action();
-//});
-
 Router::match(['get', 'post'], '/register', function() {
     include_once "app/controllers/controller_register.php";
     (new App\Controllers\ControllerRegister())->action();

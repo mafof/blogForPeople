@@ -2,9 +2,11 @@
 <link rel="stylesheet" href="css/form.css">
 
 <div class="container">
-    <?php if($data["isError"] === true): ?>
+    <?php if(!empty($data["errors"])): ?>
         <div class="card card-error">
-            <p>Найдены ошибки</p>
+            <?php foreach ($data["errors"] as $value): ?>
+                <p><?= $value ?></p>
+            <?php endforeach; ?>
         </div>
     <?php endif; ?>
     <form action="/register" method="post" class="card card-register" id="form-register" required>
@@ -16,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label for="email">Почта</label>
-                <input type="text" name="email" id="email" placeholder="example@mail.ru" required>
+                <input type="email" name="email" id="email" placeholder="example@mail.ru" required>
                 <small class="error-code"></small>
             </div>
             <div class="form-group">

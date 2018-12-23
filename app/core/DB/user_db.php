@@ -21,8 +21,6 @@ class UserDB extends BaseDB {
     }
 
     public function createUser($nickname, $email, $hashPassword, $group = 1, $isConfirm = false) {
-        $date = new \DateTime();
-        $time = $date->format('Y-m-d');
         return parent::sendSql(
             "INSERT INTO `users_info`(`nickname`, `email`, `password`, `userGroup`, `isConfirm`) VALUES (:nickname, :email, :password, :userGroup, :confirm)",
             [
@@ -37,6 +35,10 @@ class UserDB extends BaseDB {
 
     public function getUser($id) {
         return parent::sendSqlAndGetData("SELECT * FROM `users_info` WHERE `id`=:id", ['id' => $id]);
+    }
+
+    public function getIdByNickname($nickname) {
+        return parent::sendSqlAndGetData("SELECT `id` FROM `users_info` WHERE `nickname`=:nick", ['nick' => $nickname]);
     }
 
     public function removeUser($id) {}

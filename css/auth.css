@@ -2,7 +2,7 @@
     max-width: 550px;
     margin: 0 auto;
     background-color: #fff;
-    border-radius: 14px;
+    border-radius: 4px;
 }
 
 .container .card .row {
@@ -11,7 +11,14 @@
 
 .card-error {
     background-color: rgba(255, 0, 0, 0.62)!important;
+    padding: 5px;
+    margin-top: 1rem!important;
 }
+
+.card-error p {
+    margin: 10px 0px;
+}
+
 
 .card-register {
     margin-top: 1rem!important;
