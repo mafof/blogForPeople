@@ -10,6 +10,11 @@ Router::get('/', function() {
     (new App\Controllers\ControllerMain())->action();
 });
 
+Router::get('/about', function() {
+    include_once "app/controllers/controller_about.php";
+    (new App\Controllers\ControllerAbout())->action();
+});
+
 Router::error(function() {
     include_once "app/controllers/controller_error_404.php";
     (new \App\Controllers\ControllerError404())->action();
