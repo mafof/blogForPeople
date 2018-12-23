@@ -19,8 +19,13 @@
             <li><i class="fas fa-home"></i><a href="/">Главная</a></li>
             <li><i class="fab fa-facebook-messenger"></i><a href="/about">О блоге</a></li>
             <div class="container-right">
-                <li><i class="fas fa-sign-in-alt"></i><a href="/login">Войти</a></li>
-                <li><i class="fas fa-user-plus"></i><a href="/register">Регистрация</a></li>
+                <?php if(!empty($data)): ?>
+                    <li><i class="fas fa-user"></i><a href="/profile/<?=$data['nickname'];?>">Профиль: <?=$data['nickname'];?></a></li>
+                    <li><i class="fas fa-sign-out-alt"></i></i><a href="/logout">Выйти</a></li>
+                <?php else: ?>
+                    <li><i class="fas fa-sign-in-alt"></i><a href="/login">Войти</a></li>
+                    <li><i class="fas fa-user-plus"></i><a href="/register">Регистрация</a></li>
+                <?php endif; ?>
             </div>
         </ul>
     </nav>
