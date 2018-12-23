@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <img src="https://2ch.hk/images/notfound.jpg" alt="Картинка">
+    <img src="img/page_not_found.png" alt="Картинка">
     <p>404 Not found</p>
     <a href="/">перейти на главную</a>
 </body>
