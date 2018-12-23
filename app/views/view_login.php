@@ -77,7 +77,7 @@
         formRegister.addEventListener('submit', function (ev) {
             var elements = document.getElementsByClassName("error-code");
 
-            for(var i=0; i < (elements.length-1); i++) {
+            for(var i=0; i < elements.length; i++) {
                 if(elements[i].style.display !== "none") {
                     ev.preventDefault();
                     alert("Вы указали что-то не корректно");
