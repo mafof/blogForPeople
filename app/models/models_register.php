@@ -65,7 +65,7 @@ class ModelRegister extends BaseModel {
                 $resultRequest = $db->createUser($result['nickname'], $result['email'], password_hash($result['password'], PASSWORD_DEFAULT));
 
                 if($resultRequest) {
-                    $_SESSION['id'] = ($db->getIdByNickname('mafofing'))['id'];
+                    $_SESSION['id'] = ($db->getIdByNickname($result['nickname']))['id'];
                     $db->closeDB();
                     header('Location: /');
                 } else {
