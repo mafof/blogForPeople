@@ -34,11 +34,15 @@ class UserDB extends BaseDB {
     }
 
     public function getUser($id) {
-        return parent::sendSqlAndGetData("SELECT * FROM `users_info` WHERE `id`=:id", ['id' => $id]);
+        $res = parent::sendSqlAndGetData("SELECT * FROM `users_info` WHERE `id`=:id", ['id' => $id]);
+        if(empty($res)) return [];
+        else return $res[0];
     }
 
     public function getIdByNickname($nickname) {
-        return parent::sendSqlAndGetData("SELECT `id` FROM `users_info` WHERE `nickname`=:nick", ['nick' => $nickname]);
+        $res = parent::sendSqlAndGetData("SELECT `id` FROM `users_info` WHERE `nickname`=:nick", ['nick' => $nickname]);
+        if(empty($res)) return [];
+        else return $res[0];
     }
 
     public function removeUser($id) {}

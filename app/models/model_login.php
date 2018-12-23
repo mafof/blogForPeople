@@ -1,11 +1,12 @@
 <?php
+
 namespace App\Models;
+
 
 use App\Core\BaseModel;
 use App\Core\DB\UserDB;
 
-class ModelRegister extends BaseModel {
-
+class ModelLogin extends BaseModel {
     private function checkStringToRussianLaungage($val) {
         preg_match_all('/[а-яА-Я\s]/m', $val, $matches, PREG_SET_ORDER, 0);
         return !empty($matches);
@@ -21,25 +22,18 @@ class ModelRegister extends BaseModel {
      * @return array либо с ошибками, либо с данными
      */
     private function checkData() {
-        $nickname = trim($_POST['nickname']);
-        $email = trim($_POST['email']);
+        $login = trim($_POST['nickname']);
         $password = trim($_POST['password']);
 
-        if(empty($nickname) || empty($email) || empty($password)) return ["errors" => ["Некорректны введенные данные"]]; // Проверка на пустоту
+        if(empty($login) || empty($password)) return ["errors" => ["Некорректны введенные данные"]]; // Проверка на пустоту
 
-        if($this->checkStringToRussianLaungage($nickname) ||
-           $this->checkStringToRussianLaungage($email) ||
-           $this->checkStringToRussianLaungage($password) ||
-           $this->checkFirstSymbolToNumber($nickname[0]) ||
-           strlen($nickname) > 50 ||
-           strlen($password) < 8)
+        if($this->checkStringToRussianLaungage($login) ||
+           $this->checkFirstSymbolToNumber($login[0]))
         {
-            return ["errors" => ["Некорректны введенные данные"]];
+            return ["errors" => ["Некорректный ник"]];
         }
-
         return [
-            'nickname' => $nickname,
-            'email' => $email,
+            'login' => $login,
             'password' => $password
         ];
     }
@@ -51,22 +45,27 @@ class ModelRegister extends BaseModel {
             return null;
         } else {
             $result = $this->checkData();
+
             if(!empty($result['errors'])) {
                 return $result;
             } else {
                 $db = new UserDB(true);
 
-                if(!empty($db->getIdByNickname($result['nickname']))) return ['errors' => ['Данный аккаунт уже зарегестрирован']];
+                $idUser = $db->getIdByNickname($result['login']);
 
-                $resultRequest = $db->createUser($result['nickname'], $result['email'], password_hash($result['password'], PASSWORD_DEFAULT));
-
-                if($resultRequest) {
-                    $_SESSION['id'] = ($db->getIdByNickname('mafofing'))['id'];
+                if(!empty($idUser)) {
+                    $user = $db->getUser($idUser['id']);
                     $db->closeDB();
-                    header('Location: /');
+
+                    if(password_verify($_POST['password'], $user['password'])) {
+                        $_SESSION['id'] = $idUser['id'];
+                        header('Location: /');
+                    } else {
+                        return ['errors' => ['Не верный пароль']];
+                    }
                 } else {
                     $db->closeDB();
-                    return ['errors' => ['Упс, что то пошло не так, попробуйте еще раз']];
+                    return ['errors' => ['Данный пользователь не зарегистрирован']];
                 }
             }
         }
