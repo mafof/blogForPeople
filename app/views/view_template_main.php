@@ -20,7 +20,15 @@
             <li><i class="fab fa-facebook-messenger"></i><a href="/about">О блоге</a></li>
             <div class="container-right">
                 <?php if(!empty($data['nickname'])): ?>
-                    <li><i class="fas fa-user"></i><a href="/profile/<?=$data['nickname'];?>">Профиль: <?=$data['nickname'];?></a></li>
+                    <li class="dropdown-button"><i class="fas fa-user"></i><a href="/profile/<?=$data['nickname'];?>">Профиль: <?=$data['nickname'];?></a>
+                        <ul class="dropdown">
+                            <li><a href="/profile/<?=$data['nickname'];?>/posts">Список моих постов</a></li>
+                            <li><a href="/createPost">Создать пост</a></li>
+                            <?php if($data['userGroup'] == 0): ?>
+                                <li><a href="/admin">Админ панель</a></li>
+                            <?php endif; ?>
+                        </ul>
+                    </li>
                     <li><i class="fas fa-sign-out-alt"></i></i><a href="/logout">Выйти</a></li>
                 <?php else: ?>
                     <li><i class="fas fa-sign-in-alt"></i><a href="/login">Войти</a></li>
