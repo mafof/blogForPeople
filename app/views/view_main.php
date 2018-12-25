@@ -10,6 +10,7 @@
     <div class="posts-list">
         <div class="post">
             <h2 class="title">Название статьи/поста</h2>
+            <img src="http://elitefon.ru/images/201504/elitefon.ru_39256.jpg" alt="" class="image-prev">
             <p class="text-prev">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad assumenda delectus enim, fugiat hic iste labore laudantium ratione tempora ullam veniam voluptatem! Animi modi molestias nisi non sit voluptatem!
             </p>
@@ -31,20 +32,20 @@
     </div>
     <div class="posts-popular">
         <div class="container-post-popular">
-            <h2>Популярные категории за все время: </h2>
-            <div class="tags">
-                <a href="/tag/nameTag">Lorem</a>
-                <a href="/tag/nameTag">Lorem</a>
-                <a href="/tag/nameTag">Lorem</a>
-                <a href="/tag/nameTag">Lorem</a>
-                <a href="/tag/nameTag">Lorem</a>
-                <a href="/tag/nameTag">Lorem</a>
-                <a href="/tag/nameTag">Lorem</a>
-                <a href="/tag/nameTag">Lorem</a>
-                <a href="/tag/nameTag">Lorem</a>
-                <a href="/tag/nameTag">Lorem</a>
-                <a href="/tag/nameTag">Lorem</a>
-                <a href="/tag/nameTag">Lorem</a>
+            <h2>Популярные категории:</h2>
+            <div class="category">
+                <a href="/category/nameCategory">Lorem</a>
+                <a href="/category/nameCategory">Lorem</a>
+                <a href="/category/nameCategory">Lorem</a>
+                <a href="/category/nameCategory">Lorem</a>
+                <a href="/category/nameCategory">Lorem</a>
+                <a href="/category/nameCategory">Lorem</a>
+                <a href="/category/nameCategory">Lorem</a>
+                <a href="/category/nameCategory">Lorem</a>
+                <a href="/category/nameCategory">Lorem</a>
+                <a href="/category/nameCategory">Lorem</a>
+                <a href="/category/nameCategory">Lorem</a>
+                <a href="/category/nameCategory">Lorem</a>
             </div>
         </div>
     </div>

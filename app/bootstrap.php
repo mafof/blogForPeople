@@ -13,6 +13,7 @@ require_once "core/DB/user_db.php";
 // Подключаем роуты =>
 require_once "core/routes/main.php";
 require_once "core/routes/auth.php";
+require_once "core/routes/profile.php";
 
 use Pecee\SimpleRouter\SimpleRouter as Router;
 

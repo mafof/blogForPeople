@@ -9,7 +9,7 @@
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
-    <form action="/register" method="post" class="card card-register" id="form-register" required>
+    <form action="/register" method="post" class="card card-register" id="form-register">
         <div class="row">
             <div class="form-group">
                 <label for="nickname">Никнейм</label>

@@ -45,29 +45,6 @@ header p:last-child {
     display: inline-block;
 }
 
-.container .posts-popular {
-    width: 40%;
-    display: inline-block;
-    margin-left: -4px;
-    float: right;
-}
-
-.container .posts-popular .container-post-popular {
-    width: 95%;
-    float: right;
-    background-color: white;
-    border-radius: 14px;
-}
-
-.container .posts-popular .container-post-popular h2 {
-    margin: 0px;
-    padding: 10px;
-}
-
-.container .posts-popular .container-post-popular .tags {
-    padding: 0px 10px 10px 10px;
-}
-
 .container .posts-list .post {
     width: 100%;
     background-color: white;
@@ -78,6 +55,10 @@ header p:last-child {
 .container .posts-list .post .title {
     margin: 0px;
     padding: 10px;
+}
+
+.container .posts-list .post .image-prev {;
+    width: inherit;
 }
 
 .container .posts-list .post .text-prev {
@@ -115,6 +96,29 @@ header p:last-child {
 .container .posts-list .post .post-footer .reading-more {
     float: right;
     margin: 0px;
+}
+
+.container .posts-popular {
+    width: 40%;
+    display: inline-block;
+    margin-left: -4px;
+    float: right;
+}
+
+.container .posts-popular .container-post-popular {
+    width: 95%;
+    float: right;
+    background-color: white;
+    border-radius: 14px;
+}
+
+.container .posts-popular .container-post-popular h2 {
+    margin: 0px;
+    padding: 10px;
+}
+
+.container .posts-popular .container-post-popular .category {
+    padding: 0px 10px 10px 10px;
 }
 
 @media all and (max-width: 960px) {

@@ -27,6 +27,25 @@
     padding: 3px;
 }
 
+.form-group textarea {
+    width: 99%;
+    height: 200px;
+    resize: vertical;
+}
+
+.form-group .buttons {
+
+}
+
+.form-group .buttons i {
+    display: inline;
+}
+
+#photo {
+    margin-top: 20px;
+    display: block;
+}
+
 .submit-form-button {
     border: none;
     border-radius: 5px;

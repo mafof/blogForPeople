@@ -23,7 +23,7 @@
                     <li class="dropdown-button"><i class="fas fa-user"></i><a href="/profile/<?=$data['nickname'];?>">Профиль: <?=$data['nickname'];?></a>
                         <ul class="dropdown">
                             <li><a href="/profile/<?=$data['nickname'];?>/posts">Список моих постов</a></li>
-                            <li><a href="/createPost">Создать пост</a></li>
+                            <li><a href="/createpost">Создать пост</a></li>
                             <?php if($data['userGroup'] == 0): ?>
                                 <li><a href="/admin">Админ панель</a></li>
                             <?php endif; ?>
