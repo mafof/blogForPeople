@@ -121,6 +121,25 @@ header p:last-child {
     padding: 0px 10px 10px 10px;
 }
 
+.spoiler {
+    display: inline;
+    position: relative;
+}
+
+.spoiler::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0E1B1D;
+}
+
+.spoiler:hover::after {
+    display: none;
+}
+
 @media all and (max-width: 960px) {
     /** body=> */
     .container .posts-popular {
