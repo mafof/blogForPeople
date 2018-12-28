@@ -14,10 +14,10 @@ class ModelCreatePost extends BaseModel {
 
         foreach ($tagsImage as $key => $item) {
             $url = explode('=', $tagsImage[$key][0])[1];
-            $url = substr($url, 0, strlen($url)-1);
+            $url = substr($url, 0, mb_strlen($url)-1);
 
             $resultString .= substr($text, $offset, $tagsImage[$key][1] - $offset) . "<img src='". $url ."'>";
-            $offset += $tagsImage[$key][1] + strlen($tagsImage[$key][0]);
+            $offset += $tagsImage[$key][1] + mb_strlen($tagsImage[$key][0]);
         }
 
         return $resultString;
@@ -66,7 +66,7 @@ class ModelCreatePost extends BaseModel {
             'author' => $author
         ];
 
-        if(strlen($title) > 50) {
+        if(mb_strlen($title) > 50) {
             return array_merge(['errors' => ['Длина заголовка не может быть больше 50 символов']], $data);
         } else if (strlen($prevText) > 255) {
             return array_merge(['errors' => ['Длина предпросмотренного текста не должна превышать 255 символов']], $data);

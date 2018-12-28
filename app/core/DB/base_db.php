@@ -19,6 +19,10 @@ class BaseDB {
         $this->db = null;
     }
 
+    public function getInstanceDB() {
+        return $this->db;
+    }
+
     public function sendSqlAndGetData($sql, $inputData = null) {
         if(is_null($this->db)) return null;
 

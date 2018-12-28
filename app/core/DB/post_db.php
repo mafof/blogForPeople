@@ -23,5 +23,14 @@ class PostDB extends BaseDB {
         );
     }
 
-    public function getPosts($numberOfPosts, $offset = 0) {}
+    public function getPosts($numberOfPosts, $offset = 0) {
+        // Костыль для того что бы работали инструкции LIMIT и OFFSET =>
+        parent::getInstanceDB()->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
+        $result = parent::sendSqlAndGetData("SELECT * FROM `posts_info` LIMIT ? OFFSET ?", [$numberOfPosts, $offset]);
+        parent::getInstanceDB()->setAttribute(\PDO::ATTR_EMULATE_PREPARES, true);
+
+        return $result;
+    }
+
+    public function getPost($id) {}
 }
