@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Дек 22 2018 г., 23:35
+-- Время создания: Дек 28 2018 г., 16:46
 -- Версия сервера: 5.7.24-0ubuntu0.16.04.1
 -- Версия PHP: 7.2.13-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -25,6 +25,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `category_list`
+--
+
+CREATE TABLE `category_list` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `comments_info`
 --
 
@@ -38,15 +49,37 @@ CREATE TABLE `comments_info` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `groups_users_list`
+--
+
+CREATE TABLE `groups_users_list` (
+  `id` int(11) NOT NULL,
+  `unicalId` tinyint(4) NOT NULL,
+  `nameGroup` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `groups_users_list`
+--
+
+INSERT INTO `groups_users_list` (`id`, `unicalId`, `nameGroup`) VALUES
+(1, 0, 'Администратор'),
+(2, 1, 'Пользователь');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `posts_info`
 --
 
 CREATE TABLE `posts_info` (
   `id` int(11) NOT NULL,
+  `author` text NOT NULL,
   `title` varchar(50) NOT NULL,
   `prevImage` text NOT NULL,
   `prevText` varchar(255) NOT NULL,
   `text` text NOT NULL,
+  `categoryName` text NOT NULL,
   `dateCreate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -70,9 +103,21 @@ CREATE TABLE `users_info` (
 --
 
 --
+-- Индексы таблицы `category_list`
+--
+ALTER TABLE `category_list`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `comments_info`
 --
 ALTER TABLE `comments_info`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `groups_users_list`
+--
+ALTER TABLE `groups_users_list`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -85,17 +130,29 @@ ALTER TABLE `posts_info`
 -- Индексы таблицы `users_info`
 --
 ALTER TABLE `users_info`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
+-- AUTO_INCREMENT для таблицы `category_list`
+--
+ALTER TABLE `category_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT для таблицы `comments_info`
 --
 ALTER TABLE `comments_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `groups_users_list`
+--
+ALTER TABLE `groups_users_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `posts_info`
