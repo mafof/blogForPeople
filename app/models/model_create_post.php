@@ -27,6 +27,7 @@ class ModelCreatePost extends BaseModel {
         $text = preg_replace(['/(\[b\])/', '/(\[\/b\])/'], ['<b>', '</b>'], $text);
         $text = preg_replace(['/(\[s\])/', '/(\[\/s\])/'], ['<s>', '</s>'], $text);
         $text = preg_replace(['/(\[h\])/', '/(\[\/h\])/'], ['<div class="spoiler">', '</div>'], $text);
+        $text = preg_replace('/(\[nl\])/', '<br>', $text);
 
         preg_match_all('/\[inpImg=[a-zA-Zа-яА-Я0-9:\/.]+\]/', $text, $resultTagImage, PREG_OFFSET_CAPTURE);
         $text = $this->getUrlImage($text, $resultTagImage[0]);

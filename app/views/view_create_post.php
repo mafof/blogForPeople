@@ -9,7 +9,7 @@
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
-    <form action="/createpost" method="post" enctype="multipart/form-data" class="card card-register" id="form-register">
+    <form action="/createpost" method="post" onsubmit="addNewLines(this)" enctype="multipart/form-data" class="card card-register" id="form-register">
         <div class="row">
             <div class="form-group">
                 <label for="title">Заголовок статьи</label>
@@ -66,5 +66,16 @@
 
             textArea.value = startString + tagStart + beetwenTag + tagEnd + endString;
         }
+    }
+
+    function addNewLines(ev) {
+        var prevText = ev[1].value,
+            fullText = ev[2].value;
+
+        prevText = prevText.replace(/\n/g, "[nl]");
+        fullText = fullText.replace(/\n/g, "[nl]");
+
+        document.getElementById('prev-text').value = prevText;
+        document.getElementById('text').value = fullText;
     }
 </script>
