@@ -15,6 +15,17 @@ Router::get('/about', function() {
     (new App\Controllers\ControllerAbout())->action();
 });
 
+Router::get('/post/{id}', function ($id) {
+    $GLOBALS['postId'] = $id;
+    include_once "app/controllers/controller_show_post.php";
+    (new App\Controllers\ControllerShowPost())->action();
+});
+
+Router::post('/sendComment', function () {
+    include_once "app/controllers/controller_show_post.php";
+    (new App\Controllers\ControllerShowPost())->action();
+});
+
 Router::error(function() {
     include_once "app/controllers/controller_error_404.php";
     (new \App\Controllers\ControllerError404())->action();

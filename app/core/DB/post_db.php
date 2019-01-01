@@ -32,5 +32,7 @@ class PostDB extends BaseDB {
         return $result;
     }
 
-    public function getPost($id) {}
+    public function getPost($id) {
+        return parent::sendSqlAndGetData("SELECT * FROM `posts_info` WHERE `id`= :id", ['id' => $id])[0];
+    }
 }

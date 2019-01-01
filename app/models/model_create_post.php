@@ -69,7 +69,7 @@ class ModelCreatePost extends BaseModel {
 
         if(mb_strlen($title) > 50) {
             return array_merge(['errors' => ['Длина заголовка не может быть больше 50 символов']], $data);
-        } else if (strlen($prevText) > 255) {
+        } else if (mb_strlen($prevText) > 255) {
             return array_merge(['errors' => ['Длина предпросмотренного текста не должна превышать 255 символов']], $data);
         }
 
