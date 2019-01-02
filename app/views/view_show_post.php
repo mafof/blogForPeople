@@ -14,34 +14,36 @@
         <?php endif; ?>
     </div>
 
-    <div class="main-comment">
-        <form action="/sendComment" method="post" class="form-send-comment">
-            <p>Оставить коментарий:</p>
-            <div class="group">
-                <label for="message">Ваше сообщение</label>
-                <textarea name="message" id="message"></textarea>
-            </div>
-            <input class="submit-form-button" type="submit" value="Отправить сообщение">
-        </form>
-
-        <div class="list-comment">
-            <div class="row-list-comments">
-                <h2>30 коментариев</h2>
-                <div class="comment">
-                    <b class="author">Mafof</b>
-                    <p class="text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid architecto,
-                        debitis eum mollitia necessitatibus nisi porro? Cum, ea eum exercitationem fugit illo nihil pariatur possimus, praesentium quae sed ut, vel!
-                    </p>
+    <?php if(empty($data['errors'])): ?>
+        <div class="main-comment">
+            <form action="/sendComment" method="post" class="form-send-comment">
+                <p>Оставить коментарий:</p>
+                <div class="group">
+                    <label for="message">Ваше сообщение</label>
+                    <textarea name="message" id="message"></textarea>
                 </div>
-                <div class="comment">
-                    <b class="author">Mafof</b>
-                    <p class="text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid architecto,
-                        debitis eum mollitia necessitatibus nisi porro? Cum, ea eum exercitationem fugit illo nihil pariatur possimus, praesentium quae sed ut, vel!
-                    </p>
+                <input class="submit-form-button" type="submit" value="Отправить сообщение">
+            </form>
+
+            <div class="list-comment">
+                <div class="row-list-comments">
+                    <?php if(empty($data['comments'])): ?>
+                        <h2>Нет коментариев</h2>
+                    <?php else: ?>
+                        <h2><?= count($data['comments']) ?> Комментариев</h2>
+
+                        <?php foreach($data['comments'] as $item): ?>
+                            <div class="comment">
+                                <div class="title">
+                                    <b class="author"><?= $item['author'] ?></b>
+                                    <p><?= $item['dateCreate'] ?></p>
+                                </div>
+                                <p class="text"><?= $item['text'] ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
-    </div>
+    <?php endif; ?>
 </div>

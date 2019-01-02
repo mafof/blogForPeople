@@ -71,3 +71,12 @@ p {
 .list-comment .row-list-comments .comment .text {
     padding: 5px;
 }
+
+.list-comment .row-list-comments .comment .title * {
+    display: inline;
+    margin: 0px;
+}
+
+.list-comment .row-list-comments .comment .title p {
+    padding-left: 10px!important;
+}

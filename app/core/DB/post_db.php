@@ -35,4 +35,22 @@ class PostDB extends BaseDB {
     public function getPost($id) {
         return parent::sendSqlAndGetData("SELECT * FROM `posts_info` WHERE `id`= :id", ['id' => $id])[0];
     }
+
+    public function createComment($author, $text, $postId) {
+        $time = new \DateTime();
+        $formatTime = $time->format("Y-m-d");
+
+        return parent::sendSql('INSERT INTO `comments_info`(`idPost`, `author`, `text`, `dateCreate`) VALUES(:idPost, :author, :text, :dateCreate)', [
+            'idPost' => $postId,
+            'author' => $author,
+            'text' => $text,
+            'dateCreate' => $formatTime
+        ]);
+    }
+
+    public function getComments($postId) {
+        return parent::sendSqlAndGetData('SELECT * FROM `comments_info` WHERE `idPost`=:idPost', [
+            'idPost' => $postId
+        ]);
+    }
 }
