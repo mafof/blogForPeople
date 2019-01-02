@@ -121,6 +121,14 @@ header p:last-child {
     padding: 0px 10px 10px 10px;
 }
 
+.container .posts-popular .container-post-popular .category a:last-child::after {
+    content: none;
+}
+
+.container .posts-popular .container-post-popular .category a::after {
+    content: ',';
+}
+
 .spoiler {
     display: inline;
     position: relative;
@@ -148,4 +156,8 @@ header p:last-child {
     .container .posts-list {
         width: 100%;
     }
+    .container .posts-list .post .post-footer .category {
+        display: none;
+    }
+    
 }

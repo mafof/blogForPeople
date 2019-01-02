@@ -11,10 +11,11 @@ class ModelMain extends BaseModel {
 
         $postDB = new PostDB(true);
         $listPosts = $postDB->getPosts(10, 0);
+        $popularCategorys = $postDB->getAllCategorySortForPopular();
         $postDB->closeDB();
 
         if(!empty($listPosts)) {
-            return array_merge($dataUser, ['posts' => $listPosts]);
+            return array_merge($dataUser, ['posts' => $listPosts, 'categories' => $popularCategorys]);
         } else {
             return $dataUser;
         }

@@ -38,7 +38,7 @@
             </div>
             <div class="form-group">
                 <label for="category-name">Напишите категорию в которой будет распологаться данный пост</label>
-                <input type="text" name="category-name" id="category-name" placeholder="Категория" maxlength="50" value="<?= !empty($data['category-name']) ? $data['category-name'] : ''; ?>" required>
+                <input type="text" name="category-name" onkeyup="checkSymbol(this)" id="category-name" placeholder="Категория" maxlength="50" value="<?= !empty($data['category-name']) ? $data['category-name'] : ''; ?>" required>
                 <small class="error-code"></small>
             </div>
             <input type="file" accept="image/*" name="photo" id="photo">
@@ -48,6 +48,12 @@
 </div>
 
 <script>
+    function checkSymbol(ev) {
+        var regex = /( )/gm;
+        var text = ev.value;
+        document.getElementById('category-name').value = text.replace(regex, '');
+    }
+
     function doAddTags(textAreaInput, tagStart) {
         var textArea = document.getElementById(textAreaInput);
         if(tagStart === '[inpImg]') {

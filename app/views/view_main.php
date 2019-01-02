@@ -18,10 +18,14 @@
                             <i class="fas fa-user"></i>
                             <a href="/profile/<?= $item['author'] ?>"><?= $item['author'] ?></a>
                         </div>
-                        <!--div class="post-footer-part counter-watched">
-                            <i class="fas fa-eye"></i>
-                            <p>100</p>
-                        </div-->
+                        <div class="post-footer-part">
+                            <i class="fas fa-calendar-alt"></i>
+                            <p><?= $item['dateCreate'] ?></p>
+                        </div>
+                        <div class="post-footer-part category">
+                            <i class="fas fa-archive"></i>
+                            <a href="/category/<?= \App\Core\TranslateConverterCirricle::translateToEnglish($item['categoryName']) ?>"><?= $item['categoryName'] ?></a>
+                        </div>
                         <div class="post-footer-part reading-more">
                             <i class="fab fa-readme"></i>
                             <a href="/post/<?= $item['id'] ?>">Читать далее</a>
@@ -36,18 +40,9 @@
         <div class="container-post-popular">
             <h2>Популярные категории:</h2>
             <div class="category">
-                <a href="/category/nameCategory">Lorem</a>
-                <a href="/category/nameCategory">Lorem</a>
-                <a href="/category/nameCategory">Lorem</a>
-                <a href="/category/nameCategory">Lorem</a>
-                <a href="/category/nameCategory">Lorem</a>
-                <a href="/category/nameCategory">Lorem</a>
-                <a href="/category/nameCategory">Lorem</a>
-                <a href="/category/nameCategory">Lorem</a>
-                <a href="/category/nameCategory">Lorem</a>
-                <a href="/category/nameCategory">Lorem</a>
-                <a href="/category/nameCategory">Lorem</a>
-                <a href="/category/nameCategory">Lorem</a>
+                <?php foreach($data['categories'] as $item): ?>
+                    <a href="/category/<?= \App\Core\TranslateConverterCirricle::translateToEnglish($item['categoryName']) ?>"><?= $item['categoryName'] ?></a>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

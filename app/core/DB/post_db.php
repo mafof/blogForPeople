@@ -53,4 +53,8 @@ class PostDB extends BaseDB {
             'idPost' => $postId
         ]);
     }
+
+    public function getAllCategorySortForPopular() {
+        return parent::sendSqlAndGetData('SELECT DISTINCT `categoryName` FROM `posts_info` ORDER BY `categoryName` DESC');
+    }
 }

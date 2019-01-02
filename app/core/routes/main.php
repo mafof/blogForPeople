@@ -21,6 +21,12 @@ Router::get('/post/{id}', function ($id) {
     (new App\Controllers\ControllerShowPost())->action();
 });
 
+Router::get('/category/{categoryName}', function($categoryName) {
+    $GLOBALS['categoryName'] = $categoryName;
+    include_once "app/controllers/controller_show_post_category.php";
+    (new App\Controllers\ControllerShowPostToCategory())->action();
+});
+
 Router::post('/sendComment', function () {
     include_once "app/controllers/controller_show_post.php";
     (new App\Controllers\ControllerShowPost())->action();
