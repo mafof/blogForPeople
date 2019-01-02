@@ -11,7 +11,7 @@
             <?php foreach ($data['posts'] as $item): ?>
                 <div class="post">
                     <h2 class="title"><?= $item['title'] ?></h2>
-                    <img src="<?php echo $item['prevImage'] ? "upload/" . $item['prevImage'] : ""; ?>" alt="" class="image-prev">
+                    <img src="<?php echo $item['prevImage'] ? "/upload/" . $item['prevImage'] : ""; ?>" alt="" class="image-prev">
                     <p class="text-prev"><?= $item['prevText'] ?></p>
                     <div class="post-footer">
                         <div class="post-footer-part author">

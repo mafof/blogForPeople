@@ -32,6 +32,10 @@ class PostDB extends BaseDB {
         return $result;
     }
 
+    public function getPostsToCategory($categoryName) {
+        return parent::sendSqlAndGetData("SELECT * FROM `posts_info` WHERE `categoryName`=:categoryName", ['categoryName' => $categoryName]);
+    }
+
     public function getPost($id) {
         return parent::sendSqlAndGetData("SELECT * FROM `posts_info` WHERE `id`= :id", ['id' => $id])[0];
     }
