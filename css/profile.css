@@ -1,0 +1,79 @@
+.container {
+    background-color: #fff;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.container .container-profile {
+    padding: 5px;
+}
+
+.container .container-profile h2, p {
+    margin: 0px;
+}
+
+.container .container-profile .profile-item {
+    margin-top: 5px;
+}
+
+.container .container-profile .profile-item .item {
+    width: inherit;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin: 10px 0px;
+    cursor: pointer;
+}
+
+.container .container-profile .profile-item .post .title {
+    line-height: 25px;
+    padding: 0px 5px;
+    user-select: none;
+    display: inline;
+}
+
+.container .container-profile .profile-item .post .title i {
+    position: relative;
+    top: -2px;
+}
+
+.container .container-profile .profile-item .post .title i, p {
+    display: inline;
+}
+
+.container .container-profile .profile-item .post .title .fa-sort-up {
+    top: 4px!important;
+}
+
+.container .container-profile .profile-item .post .control {
+    display: inline;
+    float: right;
+    padding: 0px 5px;
+    line-height: 25px;
+}
+
+.container .container-profile .profile-item .post .control * {
+    display: inline;
+}
+
+.container .container-profile .profile-item .post .control i {
+    top: 0px;
+}
+
+.container .container-profile .profile-item .post .container-post {
+    border-top: 1px solid black;
+    display: none;
+    padding: 0px 5px;
+    padding-bottom: 5px;
+}
+
+.container .container-profile .profile-item .post .container-post img {
+    width: 100%;
+}
+
+@media all and (max-width: 375px) {
+    .container .container-profile .profile-item .post .control {
+        float: none;
+        display: block;
+    }
+}
