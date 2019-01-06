@@ -7,6 +7,7 @@ Router::match(['get', 'post'], '/createpost', function () {
 });
 
 Router::get('/profile/{profile}', function ($profile) {
+    $GLOBALS['profileNickname'] = $profile;
     include_once "app/controllers/controller_profile_main.php";
     (new App\Controllers\ControllerProfileMain())->action();
 });

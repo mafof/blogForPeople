@@ -23,13 +23,17 @@ class PostDB extends BaseDB {
         );
     }
 
-    public function getPosts($numberOfPosts, $offset = 0) {
+    public function getPostsLimit($numberOfPosts, $offset = 0) {
         // Костыль для того что бы работали инструкции LIMIT и OFFSET =>
         parent::getInstanceDB()->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
         $result = parent::sendSqlAndGetData("SELECT * FROM `posts_info` LIMIT ? OFFSET ?", [$numberOfPosts, $offset]);
         parent::getInstanceDB()->setAttribute(\PDO::ATTR_EMULATE_PREPARES, true);
 
         return $result;
+    }
+
+    public function getPostsByUserNickname($userNickname) {
+        return parent::sendSqlAndGetData("SELECT * FROM `posts_info` WHERE `author`=:author", ['author' => $userNickname]);
     }
 
     public function getPostsToCategory($categoryName) {
@@ -56,6 +60,17 @@ class PostDB extends BaseDB {
         return parent::sendSqlAndGetData('SELECT * FROM `comments_info` WHERE `idPost`=:idPost', [
             'idPost' => $postId
         ]);
+    }
+
+    public function getCommentsForProfilePageByUserNickname($userNickname) {
+        $sql = <<<EOT
+            SELECT `title`, `comments_info`.`text`, `comments_info`.`dateCreate`, `comments_info`.`idPost`
+            FROM `comments_info`
+            INNER JOIN `posts_info`
+            ON `comments_info`.`idPost` = `posts_info`.`id`
+            WHERE `comments_info`.`author`=:author
+EOT;
+        return parent::sendSqlAndGetData($sql, ['author' => $userNickname]);
     }
 
     public function getAllCategorySortForPopular() {
