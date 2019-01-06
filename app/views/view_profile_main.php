@@ -9,14 +9,16 @@
 
             <div class="profile-posts profile-item">
                 <h2>Список постов:</h2>
-                <div class="post item" onclick="selectItem(this)">
+                <div class="post item">
                     <div class="title">
-                        <i class="fas fa-sort-down"></i>
-                        <p>Заголовок статьи</p>
-                    </div>
-                    <div class="control">
-                        <span><i class="fas fa-edit"></i>Отредактировать</span>
-                        <span><i class="fas fa-trash"></i>Удалить</span>
+                        <div class="info" onclick="selectItem(this)">
+                            <i class="fas fa-sort-down"></i>
+                            <p>Заголовок статьи</p>
+                        </div>
+                        <div class="control">
+                            <a href="/editPost/1"><i class="fas fa-edit"></i>Редактировать</a>
+                            <a href="/removePost/1"><i class="fas fa-trash"></i>Удалить</a>
+                        </div>
                     </div>
                     <div class="container-post">
                         <img src="/upload/5c27e93b1bcdd.jpeg" alt="">
@@ -26,6 +28,15 @@
                 </div>
             </div>
 
+            <div class="profile-comments profile-item">
+                <h2>Список Комментариев:</h2>
+                <div class="comment item">
+                    <p>Дата создания: 10.02.2018</p>
+                    <p>Комментарий к посту: <a href="/post/1">Ссылка на пост</a></p>
+                    <p>Текст комментария:</p>
+                    <p>Тестовый коммент</p>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -33,15 +44,17 @@
 
 <script>
     function selectItem(ev) {
-        console.dir(ev);
-        ev.children[0].children[0].className = "fas fa-sort-down";
+        var fasFa = ev.children[0],
+            content = ev.parentNode.parentNode.children[1];
+
+        fasFa.className = "fas fa-sort-down";
         if(ev.isClick === undefined) {
             ev.isClick = true;
-            ev.children[2].style.display = "block";
-            ev.children[0].children[0].className = "fas fa-sort-up";
+            content.style.display = "block";
+            fasFa.className = "fas fa-sort-up";
         } else {
-            ev.children[2].style.display = ev.isClick ? "none" : "block";
-            ev.children[0].children[0].className = ev.isClick ? "fas fa-sort-down" : "fas fa-sort-up";
+            content.style.display = ev.isClick ? "none" : "block";
+            fasFa.className = ev.isClick ? "fas fa-sort-down" : "fas fa-sort-up";
             ev.isClick = !ev.isClick;
         }
     }
