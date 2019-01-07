@@ -28,7 +28,7 @@
                                         <a href="/post/<?= $item['id'] ?>"><i class="far fa-eye"></i>Открыть пост</a>
                                         <?php if($data['isAuthor'] == true): ?>
                                             <a href="/editPost/<?= $item['id'] ?>"><i class="fas fa-edit"></i>Редактировать</a>
-                                            <a href="/removePost/<?= $item['id'] ?>"><i class="fas fa-trash"></i>Удалить</a>
+                                            <a href="/removePost/<?= $item['id'] ?>" onclick="return confirm('Удалить пост?');"><i class="fas fa-trash"></i>Удалить</a>
                                         <?php endif; ?>
                                     </div>
                                 </div>

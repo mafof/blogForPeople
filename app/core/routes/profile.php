@@ -11,3 +11,13 @@ Router::get('/profile/{profile}', function ($profile) {
     include_once "app/controllers/controller_profile_main.php";
     (new App\Controllers\ControllerProfileMain())->action();
 });
+
+Router::get('/removePost/{idPost}', function ($idPost) {
+    $GLOBALS['idPost'] = $idPost;
+    include_once "app/controllers/controller_profile_remove_post.php";
+    (new App\Controllers\ControllerProfileRemovePost())->action();
+});
+
+Router::get('/editPost/{idPost}', function ($idPost) {
+    // body...
+});

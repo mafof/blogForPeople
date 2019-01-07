@@ -10,7 +10,7 @@ class ModelMain extends BaseModel {
         if(parent::isAuth()) $dataUser = parent::getDataUser();
 
         $postDB = new PostDB(true);
-        $listPosts = $postDB->getPostsLimit(10, 0);
+        $listPosts = $postDB->getPosts();
         $popularCategorys = $postDB->getAllCategorySortForPopular();
         $postDB->closeDB();
 

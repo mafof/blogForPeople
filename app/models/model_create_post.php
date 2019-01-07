@@ -36,7 +36,7 @@ class ModelCreatePost extends BaseModel {
     }
 
     private function checkFileAndGetUnicalName() {
-        if(empty($_FILES['photo']['size'])) return true;
+        if(empty($_FILES['photo']['size'])) return "";
 
         $fileFormat = preg_split('/\//m', $_FILES['photo']['type'])[1];
         $fileName = uniqid();

@@ -7,13 +7,13 @@ class PostDB extends BaseDB {
         parent::__construct($isConnecting);
     }
 
-    public function createPost($author, $title, $prevText, $text, $categoryName, $inputImageFileName = null) {
+    public function createPost($author, $title, $prevText, $text, $categoryName, $inputImageFileName = "") {
         $time = new \DateTime();
         $formatTime = $time->format("Y-m-d");
         return parent::sendSql('INSERT INTO `posts_info`(`author`, `title`, `prevImage`, `prevText`, `text`, `categoryName`, `dateCreate`) VALUES (:author, :title, :prevImg, :prevText, :text, :categoryName, :dateCreate)',
             [
                 'title' => $title,
-                'prevImg' => ($inputImageFileName !== null) ? $inputImageFileName : "",
+                'prevImg' => $inputImageFileName,
                 'prevText' => $prevText,
                 'text' => $text,
                 'categoryName' => $categoryName,
@@ -32,6 +32,10 @@ class PostDB extends BaseDB {
         return $result;
     }
 
+    public function getPosts() {
+        return parent::sendSqlAndGetData("SELECT * FROM `posts_info`");
+    }
+
     public function getPostsByUserNickname($userNickname) {
         return parent::sendSqlAndGetData("SELECT * FROM `posts_info` WHERE `author`=:author", ['author' => $userNickname]);
     }
@@ -41,7 +45,17 @@ class PostDB extends BaseDB {
     }
 
     public function getPost($id) {
-        return parent::sendSqlAndGetData("SELECT * FROM `posts_info` WHERE `id`= :id", ['id' => $id])[0];
+        $data = parent::sendSqlAndGetData("SELECT * FROM `posts_info` WHERE `id`= :id", ['id' => $id]);
+        return empty($data) ? null : $data[0];
+    }
+
+    public function removePost($id) {
+        $postPrevImg = $this->getPost($id)['prevImage'];
+        if(!empty($postPrevImg)) {
+            unlink('upload/'.$postPrevImg);
+        }
+        $result = parent::sendSql("DELETE FROM `posts_info` WHERE `id`=:id", ['id' => $id]);
+        return $result;
     }
 
     public function createComment($author, $text, $postId) {
