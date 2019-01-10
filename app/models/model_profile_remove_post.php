@@ -6,10 +6,28 @@ use App\Core\DB\PostDB;
 
 class ModelProfileRemovePost extends BaseModel {
     public function get_data() {
-        $postDB = new PostDB(true);
-        $postDB->removePost($GLOBALS['idPost']);
-        $postDB->closeDB();
+        if(parent::isAuth()) {
+            $postDB = new PostDB(true);
 
-        header('Location: '. $_SERVER['HTTP_REFERER']);
+            $post = $postDB->getPost($GLOBALS['idPost']);
+
+            if(isset($post)) {
+                $authorPost = $post['author'];
+                $userNickname = parent::getDataUser()['nickname'];
+
+                if($authorPost == $userNickname) {
+                    $postDB->removePost($GLOBALS['idPost']);
+                }
+            } else {
+                $postDB->closeDB();
+                header('Location: /');
+            }
+
+            $postDB->closeDB();
+            $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/';
+            header('Location: ' . $referer);
+        } else {
+            header('Location: /');
+        }
     }
 }
