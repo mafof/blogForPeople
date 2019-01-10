@@ -4,37 +4,9 @@ namespace App\Models;
 use App\Core\BaseModel;
 use App\Core\DB\PostDB;
 use App\Core\DB\UserDB;
+use App\Core\TransformSpecialTags;
 
 class ModelCreatePost extends BaseModel {
-
-    private function getUrlImage($text, $tagsImage) {
-        if(empty($tagsImage)) return $text;
-        $offset = 0;
-        $resultString = '';
-
-        foreach ($tagsImage as $key => $item) {
-            $url = explode('=', $tagsImage[$key][0])[1];
-            $url = substr($url, 0, mb_strlen($url)-1);
-
-            $resultString .= substr($text, $offset, $tagsImage[$key][1] - $offset) . "<img src='". $url ."'>";
-            $offset += $tagsImage[$key][1] + mb_strlen($tagsImage[$key][0]);
-        }
-
-        return $resultString;
-    }
-
-    private function transformSpecialTags($text) {
-        $text = preg_replace(['/(\[b\])/', '/(\[\/b\])/'], ['<b>', '</b>'], $text);
-        $text = preg_replace(['/(\[s\])/', '/(\[\/s\])/'], ['<s>', '</s>'], $text);
-        $text = preg_replace(['/(\[h\])/', '/(\[\/h\])/'], ['<div class="spoiler">', '</div>'], $text);
-        $text = preg_replace('/(\[nl\])/', '<br>', $text);
-
-        preg_match_all('/\[inpImg=[a-zA-Zа-яА-Я0-9:\/.]+\]/', $text, $resultTagImage, PREG_OFFSET_CAPTURE);
-        $text = $this->getUrlImage($text, $resultTagImage[0]);
-
-        return $text;
-    }
-
     private function checkFileAndGetUnicalName() {
         if(empty($_FILES['photo']['size'])) return "";
 
@@ -73,8 +45,9 @@ class ModelCreatePost extends BaseModel {
             return array_merge(['errors' => ['Длина предпросмотренного текста не должна превышать 255 символов']], $data);
         }
 
-        $data['prevText'] = $this->transformSpecialTags($prevText);
-        $data['text'] = $this->transformSpecialTags($text);
+        $data['prevText'] = TransformSpecialTags::transformSpecialTagsToHtmlTags($prevText);
+        $data['text'] = TransformSpecialTags::transformSpecialTagsToHtmlTags($text);
+
         return $data;
     }
 

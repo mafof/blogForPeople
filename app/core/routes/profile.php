@@ -19,5 +19,7 @@ Router::get('/removePost/{idPost}', function ($idPost) {
 });
 
 Router::get('/editPost/{idPost}', function ($idPost) {
-    // body...
+    $GLOBALS['idPost'] = $idPost;
+    include_once "app/controllers/controller_profile_edit_post.php";
+    (new App\Controllers\ControllerProfileEditPost())->action();
 });

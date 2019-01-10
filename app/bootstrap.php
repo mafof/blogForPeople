@@ -5,6 +5,7 @@ require_once "core/model.php";
 require_once "core/controller.php";
 require_once "core/view.php";
 require_once "core/translate_convertor_cirillic.php";
+require_once "core/transform_special_tags.php";
 
 // Подключаем конфигурационный файл и файлы БД =>
 require_once "core/config.php";
