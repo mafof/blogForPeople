@@ -58,6 +58,42 @@ class PostDB extends BaseDB {
         return $result;
     }
 
+    public function updatePost($id, $title, $prevText, $text, $categoryName, $prevImg = null) {
+        $result = false;
+
+        parent::getInstanceDB()->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
+
+        if(is_null($prevImg)) {
+            $result = parent::sendSql("UPDATE `posts_info` SET `title`=:title, `prevText`=:prevText, `text`=:text, `categoryName`=:categoryName WHERE `id`=:id",
+                [
+                    'id' => $id,
+                    'title' => $title,
+                    'prevText'=> $prevText,
+                    'text'=> $text,
+                    'categoryName' => $categoryName
+                ]);
+        } else {
+            $postPrevImg = $this->getPost($id)['prevImage'];
+            if(!empty($postPrevImg)) {
+                unlink('upload/'.$postPrevImg);
+            }
+
+            $result = parent::sendSql("UPDATE `posts_info` SET `title`=:title, `prevText`=:prevText, `text`=:text, `categoryName`=:categoryName, `prevImage`=:prevImg WHERE `id`=:id",
+                [
+                    'id' => $id,
+                    'title' => $title,
+                    'prevText'=> $prevText,
+                    'text'=> $text,
+                    'categoryName' => $categoryName,
+                    'prevImg' => $prevImg
+                ]);
+        }
+
+        parent::getInstanceDB()->setAttribute(\PDO::ATTR_EMULATE_PREPARES, true);
+
+        return $result;
+    }
+
     public function createComment($author, $text, $postId) {
         $time = new \DateTime();
         $formatTime = $time->format("Y-m-d");

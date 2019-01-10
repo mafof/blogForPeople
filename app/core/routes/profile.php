@@ -18,7 +18,7 @@ Router::get('/removePost/{idPost}', function ($idPost) {
     (new App\Controllers\ControllerProfileRemovePost())->action();
 });
 
-Router::get('/editPost/{idPost}', function ($idPost) {
+Router::match(['get', 'post'], '/editPost/{idPost}', function ($idPost) {
     $GLOBALS['idPost'] = $idPost;
     include_once "app/controllers/controller_profile_edit_post.php";
     (new App\Controllers\ControllerProfileEditPost())->action();
