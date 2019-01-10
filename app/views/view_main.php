@@ -40,9 +40,11 @@
         <div class="container-post-popular">
             <h2>Популярные категории:</h2>
             <div class="category">
-                <?php foreach($data['categories'] as $item): ?>
-                    <a href="/category/<?= \App\Core\TranslateConverterCirricle::translateToEnglish($item['categoryName']) ?>"><?= $item['categoryName'] ?></a>
-                <?php endforeach; ?>
+                <?php if(!empty($data['categories'])): ?>
+                    <?php foreach($data['categories'] as $item): ?>
+                        <a href="/category/<?= \App\Core\TranslateConverterCirricle::translateToEnglish($item['categoryName']) ?>"><?= $item['categoryName'] ?></a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>
