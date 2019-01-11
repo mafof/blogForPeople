@@ -13,9 +13,9 @@ class ModelProfileRemovePost extends BaseModel {
 
             if(isset($post)) {
                 $authorPost = $post['author'];
-                $userNickname = parent::getDataUser()['nickname'];
+                $dataUser = parent::getDataUser();
 
-                if($authorPost == $userNickname) {
+                if($dataUser['userGroup'] == 0 || $authorPost == $dataUser['nickname']) {
                     $postDB->removePost($GLOBALS['idPost']);
                 }
             } else {
