@@ -1,0 +1,94 @@
+.container {
+    background-color: #fff;
+    margin-top: 10px;
+}
+
+.container .navigation {
+    width: inherit;
+    text-align: center;
+    padding-top: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container .navigation span {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.container .navigation span:after {
+    content: ' /';
+}
+
+.container .navigation span:last-child:after {
+    content: none;
+}
+
+.container .content {
+    width: 100%;
+}
+
+.container .content .content-item {
+    width: inherit;
+    padding-bottom: 5px;
+    overflow: scroll;
+}
+
+.container .content table {
+    border-collapse: collapse;
+    margin: 5px;
+    text-align: center;
+    width: 100%;
+}
+
+.container .content table .control a, span {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    width: max-content;
+    padding-bottom: 5px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container .content table .control a i {
+    padding-right: 5px;
+}
+
+.container .content table tr td {
+    padding: 5px;
+}
+
+.selectGroup {
+    position: absolute;
+    width: 100%;
+    max-width: 300px;
+    background-color: #ffffff;
+    border: 1px solid #dedede;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.selectGroup .content {
+    padding: 10px;
+}
+
+.selectGroup .content p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.selectGroup .content a {
+    display: block;
+    padding: 0px;
+    text-decoration: none;
+    color: black;
+}

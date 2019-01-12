@@ -17,6 +17,7 @@ require_once "core/DB/post_db.php";
 require_once "core/routes/main.php";
 require_once "core/routes/auth.php";
 require_once "core/routes/profile.php";
+require_once "core/routes/admin.php";
 
 use Pecee\SimpleRouter\SimpleRouter as Router;
 

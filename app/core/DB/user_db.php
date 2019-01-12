@@ -39,11 +39,25 @@ class UserDB extends BaseDB {
         else return $res[0];
     }
 
+    public function getUsers() {
+        return parent::sendSqlAndGetData("SELECT `users_info`.`id`, `nickname`, `email`, `groups_users_list`.`nameGroup`, `isConfirm` FROM `users_info` LEFT JOIN `groups_users_list` ON `users_info`.`userGroup` = `groups_users_list`.`unicalId`");
+    }
+
     public function getIdByNickname($nickname) {
         $res = parent::sendSqlAndGetData("SELECT `id` FROM `users_info` WHERE `nickname`=:nick", ['nick' => $nickname]);
         if(empty($res)) return [];
         else return $res[0];
     }
 
-    public function removeUser($id) {}
+    public function removeUser($id) {
+        return parent::sendSql("DELETE FROM `users_info` WHERE `id`=:id", ['id' => $id]);
+    }
+
+    public function updateGroupUser($userId, $groupId) {
+        return parent::sendSql("UPDATE `users_info` SET `userGroup`=:groupId WHERE `id`=:userId", ['groupId' => $groupId, 'userId' => $userId]);
+    }
+
+    public function getAllGroups() {
+        return parent::sendSqlAndGetData("SELECT `unicalId`, `nameGroup` FROM `groups_users_list`");
+    }
 }

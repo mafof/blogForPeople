@@ -10,7 +10,7 @@ class PostDB extends BaseDB {
     public function createPost($author, $title, $prevText, $text, $categoryName, $inputImageFileName = "") {
         $time = new \DateTime();
         $formatTime = $time->format("Y-m-d");
-        return parent::sendSql('INSERT INTO `posts_info`(`author`, `title`, `prevImage`, `prevText`, `text`, `categoryName`, `dateCreate`) VALUES (:author, :title, :prevImg, :prevText, :text, :categoryName, :dateCreate)',
+        return parent::sendSql('INSERT INTO `posts_info`(`author`, `title`, `prevImage`, `prevText`, `text`, `categoryName`, `dateCreate`, `isShow`) VALUES (:author, :title, :prevImg, :prevText, :text, :categoryName, :dateCreate, :isShow)',
             [
                 'title' => $title,
                 'prevImg' => $inputImageFileName,
@@ -18,7 +18,8 @@ class PostDB extends BaseDB {
                 'text' => $text,
                 'categoryName' => $categoryName,
                 'dateCreate' => $formatTime,
-                'author' => $author
+                'author' => $author,
+                'isShow' => 1
             ]
         );
     }
@@ -94,6 +95,18 @@ class PostDB extends BaseDB {
         return $result;
     }
 
+    public function updateHiddenPost($postId) {
+        $post = $this->getPost($postId);
+
+        if(isset($post)) {
+            $isShow = $post['isShow'];
+            $isShow = ($isShow == true || $isShow == 1) ? 0 : 1;
+
+            return parent::sendSql("UPDATE `posts_info` SET `isShow`=:isShow WHERE `id`=:id", ['isShow' => $isShow, 'id' => $postId]);
+        }
+        return false;
+    }
+
     public function createComment($author, $text, $postId) {
         $time = new \DateTime();
         $formatTime = $time->format("Y-m-d");
@@ -112,6 +125,10 @@ class PostDB extends BaseDB {
         ]);
     }
 
+    public function getAllCommentsForAdmin() {
+        return parent::sendSqlAndGetData("SELECT `comments_info`.`id`, `comments_info`.`author`, `comments_info`.`text`, `comments_info`.`dateCreate`, `comments_info`.`idPost`, `posts_info`.`title` FROM `comments_info` LEFT JOIN `posts_info` ON `comments_info`.`idPost` = `posts_info`.`id`");
+    }
+
     public function getCommentsForProfilePageByUserNickname($userNickname) {
         $sql = <<<EOT
             SELECT `title`, `comments_info`.`text`, `comments_info`.`dateCreate`, `comments_info`.`idPost`
@@ -121,6 +138,10 @@ class PostDB extends BaseDB {
             WHERE `comments_info`.`author`=:author
 EOT;
         return parent::sendSqlAndGetData($sql, ['author' => $userNickname]);
+    }
+
+    public function removeComment($idComment) {
+        return parent::sendSql("DELETE FROM `comments_info` WHERE `id`=:id", ['id' => $idComment]);
     }
 
     public function getAllCategorySortForPopular() {

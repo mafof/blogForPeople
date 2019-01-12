@@ -10,6 +10,13 @@ class ModelShowPost extends BaseModel {
         $postDb = new PostDB(true);
         $data = $postDb->getPost($postId);
         $postDb->closeDB();
+
+        if(isset($data)) {
+            if($data['isShow'] == 0) {
+                return null;
+            }
+        }
+
         return $data;
     }
 
@@ -43,7 +50,12 @@ class ModelShowPost extends BaseModel {
 
             $userData = parent::getDataUser();
             $userData = ($userData === null) ? ['errors' => ['Что бы оставлять комментарии необходимо авторизоваться!']] : $userData;
-            return array_merge($this->getDataPost($postId), $userData, ['comments' => $listComments]);
+
+            $dataPost = $this->getDataPost($postId);
+
+            if(is_null($dataPost)) return array_merge(['errors' => ['Данного поста не существует']], $userData);
+
+            return array_merge($dataPost, $userData, ['comments' => $listComments]);
         } else {
             if(!parent::isAuth()) header('Location: '. $_SERVER['HTTP_REFERER']);
 
