@@ -8,7 +8,15 @@ p {
     margin-top: 1rem!important;
 }
 
+.post img {
+    max-width: 100%;
+}
+
 /* form comment => */
+
+.main-comment {
+    margin-top: 10px;
+}
 
 .form-send-comment {
     padding: 8px;
