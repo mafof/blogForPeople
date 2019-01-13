@@ -54,6 +54,7 @@ class ModelShowPost extends BaseModel {
             $dataPost = $this->getDataPost($postId);
 
             if(is_null($dataPost)) return array_merge(['errors' => ['Данного поста не существует']], $userData);
+            if($userData['isConfirm'] == 0) return array_merge(['errors' => ['Для того что бы оставлять комментарии необходимо подтвердить аккаунт']], $dataPost, $userData, ['comments' => $listComments]);
 
             return array_merge($dataPost, $userData, ['comments' => $listComments]);
         } else {

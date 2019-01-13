@@ -49,6 +49,12 @@ class UserDB extends BaseDB {
         else return $res[0];
     }
 
+    public function getIdByEmail($email) {
+        $res = parent::sendSqlAndGetData("SELECT `id` FROM `users_info` WHERE `email`=:email", ['email' => $email]);
+        if(empty($res)) return [];
+        else return $res[0];
+    }
+
     public function removeUser($id) {
         return parent::sendSql("DELETE FROM `users_info` WHERE `id`=:id", ['id' => $id]);
     }
@@ -57,7 +63,23 @@ class UserDB extends BaseDB {
         return parent::sendSql("UPDATE `users_info` SET `userGroup`=:groupId WHERE `id`=:userId", ['groupId' => $groupId, 'userId' => $userId]);
     }
 
+    public function updateConfirmUser($nickname) {
+        return parent::sendSql("UPDATE `users_info` SET `isConfirm`='1' WHERE `nickname`=:nickname", ['nickname' => $nickname]);
+    }
+
     public function getAllGroups() {
         return parent::sendSqlAndGetData("SELECT `unicalId`, `nameGroup` FROM `groups_users_list`");
+    }
+
+    public function createTempLink($nickname, $link) {
+        return parent::sendSql("INSERT INTO `temp_urn_for_accept_account`(`nickname`, `urn`) VALUES (:nickname, :link)", ['nickname' => $nickname, 'link' => $link]);
+    }
+
+    public function getTempLink($nickname) {
+        return parent::sendSqlAndGetData("SELECT `urn` FROM `temp_urn_for_accept_account` WHERE `nickname`=:nickname", ['nickname' => $nickname]);
+    }
+
+    public function removeConfirmUrn($nickname) {
+        return parent::sendSql("DELETE FROM `temp_urn_for_accept_account` WHERE `nickname`=:nickname", ['nickname' => $nickname]);
     }
 }

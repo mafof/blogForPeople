@@ -3,6 +3,7 @@ namespace App\Models;
 
 use App\Core\BaseModel;
 use App\Core\DB\UserDB;
+use App\Core\Mail;
 
 class ModelRegister extends BaseModel {
 
@@ -60,12 +61,18 @@ class ModelRegister extends BaseModel {
             } else {
                 $db = new UserDB(true);
 
-                if(!empty($db->getIdByNickname($result['nickname']))) return ['errors' => ['Данный аккаунт уже зарегестрирован']];
+                if(!empty($db->getIdByNickname($result['nickname'])) || !empty($db->getIdByEmail($result['email']))) return ['errors' => ['Данный аккаунт уже зарегестрирован']];
 
                 $resultRequest = $db->createUser($result['nickname'], $result['email'], password_hash($result['password'], PASSWORD_DEFAULT));
 
                 if($resultRequest) {
                     $_SESSION['id'] = ($db->getIdByNickname($result['nickname']))['id'];
+
+                    $tempLink = uniqid();
+                    $db->createTempLink($result['nickname'], $tempLink);
+                    $mail = new Mail();
+                    $mail->sendEmail($result['email'], $result['nickname'], "Confirm account", "For confirm account follow the link ".$_SERVER['HTTP_HOST'] . "/confirmAccount/" . $tempLink);
+
                     $db->closeDB();
                     header('Location: /');
                 } else {

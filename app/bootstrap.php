@@ -12,6 +12,7 @@ require_once "core/config.php";
 require_once "core/DB/base_db.php";
 require_once "core/DB/user_db.php";
 require_once "core/DB/post_db.php";
+require_once "core/email.php";
 
 // Подключаем роуты =>
 require_once "core/routes/main.php";

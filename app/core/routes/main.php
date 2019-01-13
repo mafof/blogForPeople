@@ -32,6 +32,12 @@ Router::post('/sendComment', function () {
     (new App\Controllers\ControllerShowPost())->action();
 });
 
+Router::get('/confirmAccount/{uniqueId}', function ($uniqueId) {
+    $GLOBALS['uniqueId'] = $uniqueId;
+    include_once "app/controllers/controller_confirm_account.php";
+    (new App\Controllers\ControllerConfirmAccount())->action();
+});
+
 Router::error(function() {
     include_once "app/controllers/controller_error_404.php";
     (new \App\Controllers\ControllerError404())->action();

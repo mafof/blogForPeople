@@ -55,7 +55,10 @@ class ModelCreatePost extends BaseModel {
         if(!parent::isAuth()) header('Location: /'); // Если не авторизирован
 
         if($_SERVER['REQUEST_METHOD'] != 'POST') {
-            return parent::getDataUser();
+            $userData = parent::getDataUser();
+            if($userData['isConfirm'] == 0) return array_merge(['errors' => ['Для того что бы писать посты, нужно подтвердить аккаунт']], ['criticalError' => true], $userData);
+
+            return $userData;
         } else {
             $result = $this->checkData();
 
