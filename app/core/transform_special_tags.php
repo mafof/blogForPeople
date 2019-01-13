@@ -42,6 +42,7 @@ trait TransformSpecialTags {
 
             $resultString .= substr($text, $offset, $tagsImage[$key][1] - $offset) . "<img src='". $url ."'>";
             $offset += $tagsImage[$key][1] + mb_strlen($tagsImage[$key][0]);
+            $resultString .= substr($text, $offset);
         }
 
         return $resultString;
