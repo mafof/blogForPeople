@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Дек 28 2018 г., 16:46
+-- Время создания: Янв 14 2019 г., 18:58
 -- Версия сервера: 5.7.24-0ubuntu0.16.04.1
 -- Версия PHP: 7.2.13-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -25,22 +25,12 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `category_list`
---
-
-CREATE TABLE `category_list` (
-  `id` int(11) NOT NULL,
-  `name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `comments_info`
 --
 
 CREATE TABLE `comments_info` (
   `id` int(11) NOT NULL,
+  `idPost` int(11) NOT NULL,
   `author` varchar(100) NOT NULL,
   `text` text NOT NULL,
   `dateCreate` date NOT NULL
@@ -80,7 +70,20 @@ CREATE TABLE `posts_info` (
   `prevText` varchar(255) NOT NULL,
   `text` text NOT NULL,
   `categoryName` text NOT NULL,
-  `dateCreate` date NOT NULL
+  `dateCreate` date NOT NULL,
+  `isShow` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `temp_urn_for_accept_account`
+--
+
+CREATE TABLE `temp_urn_for_accept_account` (
+  `id` int(11) NOT NULL,
+  `nickname` text NOT NULL,
+  `urn` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -103,12 +106,6 @@ CREATE TABLE `users_info` (
 --
 
 --
--- Индексы таблицы `category_list`
---
-ALTER TABLE `category_list`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Индексы таблицы `comments_info`
 --
 ALTER TABLE `comments_info`
@@ -127,6 +124,12 @@ ALTER TABLE `posts_info`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `temp_urn_for_accept_account`
+--
+ALTER TABLE `temp_urn_for_accept_account`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `users_info`
 --
 ALTER TABLE `users_info`
@@ -135,12 +138,6 @@ ALTER TABLE `users_info`
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
-
---
--- AUTO_INCREMENT для таблицы `category_list`
---
-ALTER TABLE `category_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `comments_info`
@@ -158,6 +155,12 @@ ALTER TABLE `groups_users_list`
 -- AUTO_INCREMENT для таблицы `posts_info`
 --
 ALTER TABLE `posts_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `temp_urn_for_accept_account`
+--
+ALTER TABLE `temp_urn_for_accept_account`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
