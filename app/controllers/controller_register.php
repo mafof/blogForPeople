@@ -1,6 +1,6 @@
 <?php
 namespace App\Controllers;
-require_once "app/models/models_register.php";
+require_once "app/models/model_register.php";
 
 use App\Core\BaseController;
 use App\Models\ModelRegister;
