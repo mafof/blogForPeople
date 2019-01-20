@@ -2,6 +2,9 @@
 namespace App\Core;
 
 trait TransformSpecialTags {
+    /**
+     * Меняет HTML тег img на специальный тег для редактирования статьи
+     */
     private static function transformHtmlTagImgToSpecialTagImg($text, $tagsImage) {
         if(empty($tagsImage)) return $text;
         $imgSpecialTag = '[inpImg=';
@@ -19,6 +22,9 @@ trait TransformSpecialTags {
         return $text;
     }
 
+    /**
+     * Меняет HTML теги на специальные теги для редатирования статьи
+     */
     public static function transformHtmlTagsToSpecialTags($text) {
         $text = preg_replace(['/\<b\>/', '/\<\/b\>/'], ['[b]', '[/b]'], $text);
         $text = preg_replace(['/\<s\>/', '/\<\/s\>/'], ['[s]', '[/s]'], $text);
@@ -31,6 +37,9 @@ trait TransformSpecialTags {
         return $text;
     }
 
+    /**
+     * Меняет специальные тег изображения на тег HTML img
+     */
     private static function transformSpecialTagImgToHtmlTagImg($text, $tagsImage) {
         if(empty($tagsImage)) return $text;
         $offset = 0;
@@ -48,6 +57,9 @@ trait TransformSpecialTags {
         return $resultString;
     }
 
+    /**
+     * Меняет специальный тег на HTML тег
+     */
     public static function transformSpecialTagsToHtmlTags($text) {
         $text = preg_replace(['/(\[b\])/', '/(\[\/b\])/'], ['<b>', '</b>'], $text);
         $text = preg_replace(['/(\[s\])/', '/(\[\/s\])/'], ['<s>', '</s>'], $text);

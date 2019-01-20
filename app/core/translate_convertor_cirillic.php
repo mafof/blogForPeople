@@ -1,6 +1,9 @@
 <?php
 namespace App\Core;
 
+/**
+ * Класс для конвертирования фраз с английского языка на русский и обратно
+ */
 class TranslateConverterCirricle {
     public static $CONVERTER_TO_ENGLISH = array(
         'а' => 'a',   'б' => 'b',   'в' => 'v',
