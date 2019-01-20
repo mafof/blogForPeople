@@ -12,7 +12,11 @@ class BaseDB {
 
     public function connectDB() {
         global $CONFIG_DATABASE;
-        $this->db = new PDO('mysql:host='.$CONFIG_DATABASE['host'].';dbname='.$CONFIG_DATABASE['dbname'] . ';charset=utf8', $CONFIG_DATABASE['login'], $CONFIG_DATABASE['password']);
+		try {
+			$this->db = new PDO('mysql:host='.$CONFIG_DATABASE['host'].';dbname='.$CONFIG_DATABASE['dbname'] . ';charset=utf8', $CONFIG_DATABASE['login'], $CONFIG_DATABASE['password']);
+		} catch(\PDOException $e) {
+			die($e->getMessage());
+		}
     }
 
     public function closeDB() {

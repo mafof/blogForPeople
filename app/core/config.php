@@ -2,8 +2,8 @@
 $CONFIG_DATABASE = [
     "host" => 'localhost',
     'dbname' => 'blogForPeople',
-    'login' => 'mafof',
-    'password' => 'mafof'
+    'login' => 'root',
+    'password' => '1967'
 ];
 
 $CONFIG_MAIL = [
