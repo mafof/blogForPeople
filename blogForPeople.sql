@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Янв 14 2019 г., 18:58
+-- Время создания: Янв 21 2019 г., 00:18
 -- Версия сервера: 5.7.24-0ubuntu0.16.04.1
 -- Версия PHP: 7.2.13-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -102,6 +102,13 @@ CREATE TABLE `users_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Дамп данных таблицы `users_info`
+--
+
+INSERT INTO `users_info` (`id`, `nickname`, `email`, `password`, `userGroup`, `isConfirm`) VALUES
+(1, 'admin', 'admin@example.com', '$2y$10$nc8rIsEKdL1sEXEzqAJxyO.rLGhXqlcN2bGnF.afn6/dcOUAws1sK', 0, 1);
+
+--
 -- Индексы сохранённых таблиц
 --
 
@@ -167,7 +174,7 @@ ALTER TABLE `temp_urn_for_accept_account`
 -- AUTO_INCREMENT для таблицы `users_info`
 --
 ALTER TABLE `users_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
