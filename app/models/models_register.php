@@ -72,6 +72,7 @@ class ModelRegister extends BaseModel {
                     $db->createTempLink($result['nickname'], $tempLink);
                     $mail = new Mail();
                     $mail->sendEmail($result['email'], $result['nickname'], "Confirm account", "For confirm account follow the link ".$_SERVER['HTTP_HOST'] . "/confirmAccount/" . $tempLink);
+                    mail($result['email'], "Confirm account", "For confirm account follow the link ".$_SERVER['HTTP_HOST'] . "/confirmAccount/" . $tempLink); // Специально для OpenServer
 
                     $db->closeDB();
                     header('Location: /');
