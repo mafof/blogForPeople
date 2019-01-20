@@ -38,8 +38,13 @@ Router::get('/confirmAccount/{uniqueId}', function ($uniqueId) {
     (new App\Controllers\ControllerConfirmAccount())->action();
 });
 
-Router::error(function() {
-    include_once "app/controllers/controller_error_404.php";
-    (new \App\Controllers\ControllerError404())->action();
-    exit(); // хак что бы не было ошибки при 404
+Router::error(function(\Pecee\Http\Request $request, \Exception $exception) {
+
+    if($exception instanceof \Pecee\SimpleRouter\Exceptions\NotFoundHttpException && $exception->getCode() === 404) {
+        include_once "app/controllers/controller_error_404.php";
+        (new \App\Controllers\ControllerError404())->action();
+        die();
+    } else {
+        echo $exception->getMessage();
+    }
 });
