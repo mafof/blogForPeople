@@ -74,7 +74,7 @@
                                 <td>10.08.2018</td>
                                 <td class="control">
                                     <a href="/post/<?= $item['idPost'] ?>"><i class="far fa-eye"></i>Открыть</a>
-                                    <a href="/removeComment/<?= $item['id'] ?>" onclick="return confirm('Удалить пост?');"><i class="fas fa-trash"></i>Удалить</a>
+                                    <a href="/removeComment/<?= $item['id'] ?>" onclick="return confirm('Удалить комментарий?');"><i class="fas fa-trash"></i>Удалить</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -103,7 +103,7 @@
                                 <td><?= $item['nameGroup'] ?></td>
                                 <td><?php echo ($item['isConfirm'] == 0) ? '<span style="color: red">НЕТ</span>' : '<span style="color: green">ДА</span>'; ?></td>
                                 <td class="control">
-                                    <a href="/removeUser/<?= $item['id'] ?>" onclick="return confirm('Удалить пост?');"><i class="fas fa-trash"></i>Удалить</a>
+                                    <a href="/removeUser/<?= $item['id'] ?>" onclick="return confirm('Удалить пользователя?');"><i class="fas fa-trash"></i>Удалить</a>
                                     <span onclick="selectUser(this)"><i class="fas fa-layer-group"></i>Назначить группу</span>
                                 </td>
                             </tr>
