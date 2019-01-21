@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Хост: localhost
--- Время создания: Янв 21 2019 г., 00:18
--- Версия сервера: 5.7.24-0ubuntu0.16.04.1
--- Версия PHP: 7.2.13-1+ubuntu16.04.1+deb.sury.org+1
+-- Хост: 127.0.0.1:3306
+-- Время создания: Янв 21 2019 г., 21:06
+-- Версия сервера: 5.7.20
+-- Версия PHP: 7.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,6 +35,13 @@ CREATE TABLE `comments_info` (
   `text` text NOT NULL,
   `dateCreate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `comments_info`
+--
+
+INSERT INTO `comments_info` (`id`, `idPost`, `author`, `text`, `dateCreate`) VALUES
+(1, 1, 'admin', 'Рабочая система сообщений. Привет чат!', '2019-01-21');
 
 -- --------------------------------------------------------
 
@@ -73,6 +80,13 @@ CREATE TABLE `posts_info` (
   `dateCreate` date NOT NULL,
   `isShow` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `posts_info`
+--
+
+INSERT INTO `posts_info` (`id`, `author`, `title`, `prevImage`, `prevText`, `text`, `categoryName`, `dateCreate`, `isShow`) VALUES
+(1, 'admin', 'Преимущества данной CMS', '5c4602caac404.jpeg', 'В этом посте будет описаны возможности данной CMS', 'Работа с текстом =><br><b>Жирный шрифт</b><br><s>Зачеркнутый текст</s><br><div class=\"spoiler\">Скрытый текст</div><br><div class=\"spoiler\"><b><s>Смешанный тип</s></b></div><br>Вставка изображений с интернета =><br><img src=\'https://i.imgur.com/kgjjlo6.jpg\'><br>', 'ВозможностиСистемы', '2019-01-21', 1);
 
 -- --------------------------------------------------------
 
@@ -150,7 +164,7 @@ ALTER TABLE `users_info`
 -- AUTO_INCREMENT для таблицы `comments_info`
 --
 ALTER TABLE `comments_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `groups_users_list`
@@ -162,7 +176,7 @@ ALTER TABLE `groups_users_list`
 -- AUTO_INCREMENT для таблицы `posts_info`
 --
 ALTER TABLE `posts_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `temp_urn_for_accept_account`
