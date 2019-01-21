@@ -43,7 +43,7 @@ class ModelAdminMain extends BaseModel {
 
             return array_merge($data, parent::getDataUser());
         } else {
-            header("Location: /error404");
+            return array_merge(['errors' => ['Доступ запрещен']]);
         }
     }
 }
