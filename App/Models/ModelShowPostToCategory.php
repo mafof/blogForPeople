@@ -10,7 +10,7 @@ class ModelShowPostToCategory extends BaseModel {
         $postDb = new PostDB(true);
         $data = $postDb->getPostsToCategory(TranslateConverterCyrillic::translateToRussian($GLOBALS['categoryName']));
         if(empty($data)) $data = $postDb->getPostsToCategory($GLOBALS['categoryName']);
-        
+
         $userData = parent::getDataUser();
         $userData = ($userData == null) ? [] : $userData;
 
