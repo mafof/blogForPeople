@@ -1,6 +1,5 @@
 <?php
 namespace App\Controllers;
-require_once "App/models/ModelProfileEditPost.php";
 
 use App\Core\BaseController;
 use App\Models\ModelProfileEditPost;

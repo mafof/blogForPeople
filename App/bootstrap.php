@@ -11,8 +11,6 @@ require_once "Core/Routes/auth.php";
 require_once "Core/Routes/profile.php";
 require_once "Core/Routes/admin.php";
 
-
-
 use Pecee\SimpleRouter\SimpleRouter as Router;
 
 Router::start();

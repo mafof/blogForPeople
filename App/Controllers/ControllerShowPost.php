@@ -1,6 +1,5 @@
 <?php
 namespace App\Controllers;
-require_once "App/models/ModelShowPost.php";
 
 use App\Core\BaseController;
 use App\Models\ModelShowPost;

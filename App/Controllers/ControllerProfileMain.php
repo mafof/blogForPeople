@@ -1,6 +1,5 @@
 <?php
 namespace App\Controllers;
-require_once "App/models/ModelProfileMain.php";
 
 use App\Core\BaseController;
 use App\Models\ModelProfileMain;

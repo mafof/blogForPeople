@@ -25,7 +25,7 @@
                             </div>
                             <div class="post-footer-part category">
                                 <i class="fas fa-archive"></i>
-                                <a href="/category/<?= \App\Core\TranslateConverterCirricle::translateToEnglish($item['categoryName']) ?>"><?= $item['categoryName'] ?></a>
+                                <a href="/category/<?= \App\Core\TranslateConverterCyrillic::translateToEnglish($item['categoryName']) ?>"><?= $item['categoryName'] ?></a>
                             </div>
                             <div class="post-footer-part reading-more">
                                 <i class="fab fa-readme"></i>
@@ -44,7 +44,7 @@
             <div class="category">
                 <?php if(!empty($data['categories'])): ?>
                     <?php foreach($data['categories'] as $item): ?>
-                        <a href="/category/<?= \App\Core\TranslateConverterCirricle::translateToEnglish($item['categoryName']) ?>"><?= $item['categoryName'] ?></a>
+                        <a href="/category/<?= \App\Core\TranslateConverterCyrillic::translateToEnglish($item['categoryName']) ?>"><?= $item['categoryName'] ?></a>
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>

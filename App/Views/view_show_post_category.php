@@ -8,7 +8,7 @@
 <div class="container">
     <div class="posts-list">
         <?php if (!empty($data['posts'])): ?>
-            <h2>Посты из категории: <?= \App\Core\TranslateConverterCirricle::translateToRussian($GLOBALS['categoryName']) ?></h2>
+            <h2>Посты из категории: <?= \App\Core\TranslateConverterCyrillic::translateToRussian($GLOBALS['categoryName']) ?></h2>
             <?php foreach ($data['posts'] as $item): ?>
                 <?php if($item['isShow'] == 1): ?>
                     <div class="post">
@@ -26,7 +26,7 @@
                             </div>
                             <div class="post-footer-part category">
                                 <i class="fas fa-archive"></i>
-                                <a href="/category/<?= \App\Core\TranslateConverterCirricle::translateToEnglish($item['categoryName']) ?>"><?= $item['categoryName'] ?></a>
+                                <a href="/category/<?= \App\Core\TranslateConverterCyrillic::translateToEnglish($item['categoryName']) ?>"><?= $item['categoryName'] ?></a>
                             </div>
                             <div class="post-footer-part reading-more">
                                 <i class="fab fa-readme"></i>

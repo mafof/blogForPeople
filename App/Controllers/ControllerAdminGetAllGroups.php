@@ -1,6 +1,5 @@
 <?php
 namespace App\Controllers;
-require_once "App/models/ModelAdminGetAllGroups.php";
 
 use App\Core\BaseController;
 use App\Models\ModelAdminGetAllGroups;
