@@ -1,8 +1,8 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\Profile;
 
 use App\Core\BaseController;
-use App\Models\ModelProfileRemovePost;
+use App\Models\Profile\ModelProfileRemovePost;
 
 class ControllerProfileRemovePost extends BaseController {
     public function action() {

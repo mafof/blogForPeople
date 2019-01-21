@@ -1,8 +1,8 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Core\BaseController;
-use App\Models\ModelAdminGetAllGroups;
+use App\Models\Admin\ModelAdminGetAllGroups;
 
 class ControllerAdminGetAllGroups extends BaseController {
     public function action() {

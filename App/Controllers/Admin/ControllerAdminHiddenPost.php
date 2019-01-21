@@ -1,8 +1,8 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Core\BaseController;
-use App\Models\ModelAdminHiddenPost;
+use App\Models\Admin\ModelAdminHiddenPost;
 
 class ControllerAdminHiddenPost extends BaseController {
     public function action() {

@@ -1,8 +1,8 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\Profile;
 
 use App\Core\BaseController;
-use App\Models\ModelProfileEditPost;
+use App\Models\Profile\ModelProfileEditPost;
 
 class ControllerProfileEditPost extends BaseController {
     public function action() {

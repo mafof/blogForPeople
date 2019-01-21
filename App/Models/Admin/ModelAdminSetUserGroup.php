@@ -1,17 +1,17 @@
 <?php
-namespace App\Models;
+namespace App\Models\Admin;
 
 use App\Core\BaseModel;
 use App\Core\DB\UserDB;
 
-class ModelAdminRemoveUser extends BaseModel {
+class ModelAdminSetUserGroup extends BaseModel {
     public function get_data() {
         if(parent::isAuth()) {
             $dataUser = parent::getDataUser();
-            if($dataUser['userGroup'] != 0) header("Location: /");
+            if ($dataUser['userGroup'] != 0) header('Location: /');
 
             $userDB = new UserDB(true);
-            $userDB->removeUser($GLOBALS['userId']);
+            $userDB->updateGroupUser($GLOBALS['userId'], $GLOBALS['idGroup']);
             $userDB->closeDB();
 
             header("Location: " . $_SERVER['HTTP_REFERER']);

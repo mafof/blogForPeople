@@ -1,8 +1,8 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Core\BaseController;
-use App\Models\ModelAdminRemoveUser;
+use App\Models\Admin\ModelAdminRemoveUser;
 
 class ControllerAdminRemoveUser extends BaseController {
     public function action() {

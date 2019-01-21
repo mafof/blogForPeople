@@ -1,8 +1,8 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Core\BaseController;
-use App\Models\ModelAdminSetUserGroup;
+use App\Models\Admin\ModelAdminSetUserGroup;
 
 class ControllerAdminSetUserGroup extends BaseController {
     public function action() {

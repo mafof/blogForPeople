@@ -1,8 +1,8 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\Profile;
 
 use App\Core\BaseController;
-use App\Models\ModelProfileMain;
+use App\Models\Profile\ModelProfileMain;
 
 class ControllerProfileMain extends BaseController {
     public function action() {

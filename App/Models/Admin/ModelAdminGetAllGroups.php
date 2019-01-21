@@ -1,5 +1,5 @@
 <?php
-namespace App\Models;
+namespace App\Models\Admin;
 
 use App\Core\BaseModel;
 use App\Core\DB\UserDB;

@@ -1,8 +1,8 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Core\BaseController;
-use App\Models\ModelAdminMain;
+use App\Models\Admin\ModelAdminMain;
 
 class ControllerAdminMain extends BaseController {
     public function action() {

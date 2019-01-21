@@ -1,5 +1,5 @@
 <?php
-namespace App\Models;
+namespace App\Models\Profile;
 
 use App\Core\BaseModel;
 use App\Core\TransformSpecialTags;

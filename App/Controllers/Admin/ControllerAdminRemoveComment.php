@@ -1,8 +1,8 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Core\BaseController;
-use App\Models\ModelAdminRemoveComment;
+use App\Models\Admin\ModelAdminRemoveComment;
 
 class ControllerAdminRemoveComment extends BaseController {
     public function action() {
