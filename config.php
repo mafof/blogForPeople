@@ -3,7 +3,7 @@ $CONFIG_DATABASE = [
     "host" => 'localhost',
     'dbname' => 'blogForPeople',
     'login' => 'root',
-    'password' => '1967'
+    'password' => ''
 ];
 
 $CONFIG_MAIL = [

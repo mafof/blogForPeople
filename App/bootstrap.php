@@ -3,7 +3,7 @@
 require_once __DIR__.'/../vendor/autoload.php';
 
 // Подключаем конфигурационный файл и файлы БД =>
-require_once "Core/config.php";
+require_once __DIR__."/../config.php";
 
 // Подключаем роуты =>
 require_once "Core/Routes/main.php";
