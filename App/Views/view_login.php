@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="css/auth.css">
-<link rel="stylesheet" href="css/form.css">
+<link rel="stylesheet" href="/css/auth.css">
+<link rel="stylesheet" href="/css/form.css">
 
 <div class="container">
     <?php if(!empty($data["errors"])): ?>
@@ -26,7 +26,7 @@
     </form>
 </div>
 
-<script src="js/checkForm.js"></script>
+<script src="/js/checkForm.js"></script>
 <script>
     window.addEventListener('load', function (ev) {
         var nick = document.getElementById("nickname"),
