@@ -36,7 +36,8 @@ Router::error(function(\Pecee\Http\Request $request, \Exception $exception) {
 
     if($exception instanceof \Pecee\SimpleRouter\Exceptions\NotFoundHttpException && $exception->getCode() === 404) {
         (new \App\Controllers\ControllerPageNotFound())->action();
-        die();
+        echo "<p>Ошибка:</p>";
+        //die();
     } else {
         echo $exception->getMessage();
     }
