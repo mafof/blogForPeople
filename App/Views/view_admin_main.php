@@ -70,7 +70,7 @@
                                 <td><?= $item['id'] ?></td>
                                 <td><?= $item['author'] ?></td>
                                 <td><?= $item['title'] ?></td>
-                                <td>Привет мир</td>
+                                <td><?= $item['text'] ?></td>
                                 <td>10.08.2018</td>
                                 <td class="control">
                                     <a href="/post/<?= $item['idPost'] ?>"><i class="far fa-eye"></i>Открыть</a>
